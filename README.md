@@ -43,8 +43,8 @@ Utilizar a tecnologia base da aceleração para o desenvolvimento Java.
 * H2
 
 ### Endpoints - Overview
-Quando executado o projeto, pode ser acessados pelo swagger na url.
-http://localhost:8080/swagger-ui.html#
+A documentação do swagger pode ser visualizada pela url.
+https://central-de-erros-codenation-mt.herokuapp.com/swagger-ui.html
 
 ## Autor
 * **Matheus Herminio de Carvalho** - *Trabalho inicial baseado em específicações da codenation Java Acelera DEV* - [Codenation](https://codenation.dev/)
