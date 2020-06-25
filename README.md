@@ -25,7 +25,7 @@ Utilizar a tecnologia base da aceleração para o desenvolvimento Java.
 * Pode ser acessado por multiplos sistemas
 * Deve permitir gravar registros de eventos de log salvando informações de Level(error, warning, info), Descrição do Evento
 , LOG do Evento, ORIGEM(Sistema ou Serviço que originou o evento),
- DATA(Data do evento), QUANTIDADE(Quantidade de Eventos de mesmo tipo)
+ DATA(Data do evento)
 * Deve permitir a listagem dos eventos juntamente com a filtragem de eventos por qualquer parâmetro especificado acima
 * Deve suportar Paginação
 * Deve suportar Ordenação por diferentes tipos de atributos
@@ -40,21 +40,11 @@ Utilizar a tecnologia base da aceleração para o desenvolvimento Java.
 * Heroku
 * Git
 * Rest
+* H2
 
-##Endpoints - Overview
-
-#### Servico - Gerencia manipulação com a entidade
- 
- Função   |      Método HTTP      |  Url |
-|----------|:-------------:|------:|
-| cria |  POST | servico/buscar |
-| lista |    GET   |   servico/listar |
-| busca por id | GET |    buscar/{id} |
-
-### Evento
-
-
-### Log
+### Endpoints - Overview
+Quando executado o projeto, pode ser acessados pelo swagger na url.
+http://localhost:8080/swagger-ui.html#
 
 ## Autor
 * **Matheus Herminio de Carvalho** - *Trabalho inicial baseado em específicações da codenation Java Acelera DEV* - [Codenation](https://codenation.dev/)

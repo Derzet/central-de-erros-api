@@ -3,7 +3,6 @@ package br.com.codenation.config.error;
 import br.com.codenation.exceptions.EventoNaoEncontradoException;
 import br.com.codenation.exceptions.LogNaoEncontrandoException;
 import br.com.codenation.exceptions.ServicoNaoEncontradoException;
-import br.com.codenation.exceptions.UsuarioNaoEncontradoException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +17,12 @@ import java.util.List;
 @ControllerAdvice
 public class GlobalExceptionHandlerConfig {
 
-    @ExceptionHandler({UsuarioNaoEncontradoException.class, ServicoNaoEncontradoException.class, ServicoNaoEncontradoException.class,
+    @ExceptionHandler({ServicoNaoEncontradoException.class, ServicoNaoEncontradoException.class,
             LogNaoEncontrandoException.class})
     public final ResponseEntity<ApiError> handleException(Exception excecao, WebRequest request) {
         HttpHeaders headers = new HttpHeaders();
 
-        if (excecao instanceof UsuarioNaoEncontradoException) {
-            HttpStatus status = HttpStatus.NOT_FOUND;
-            UsuarioNaoEncontradoException usuarioNaoEncontradoException = (UsuarioNaoEncontradoException) excecao;
-            return handleUsuarioNaoEncontradoException(usuarioNaoEncontradoException, headers, status, request);
-        } else if (excecao instanceof EventoNaoEncontradoException) {
+         if (excecao instanceof EventoNaoEncontradoException) {
             HttpStatus status = HttpStatus.NOT_FOUND;
             EventoNaoEncontradoException eventoNaoEncontrandoException = (EventoNaoEncontradoException) excecao;
             return handleEventoNaoEncontrandoException(eventoNaoEncontrandoException, headers, status, request);
@@ -53,11 +48,6 @@ public class GlobalExceptionHandlerConfig {
     private ResponseEntity<ApiError> handleServicoNaoEncontradoException(ServicoNaoEncontradoException servicoNaoEncontradoException, HttpHeaders headers, HttpStatus status, WebRequest request) {
         List<String> errors = Collections.singletonList(servicoNaoEncontradoException.getMessage());
         return handleExceptionInternal(servicoNaoEncontradoException, new ApiError(errors, status), headers, status, request);
-    }
-
-    protected ResponseEntity<ApiError> handleUsuarioNaoEncontradoException(UsuarioNaoEncontradoException usuarioNaoEncontradoException, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        List<String> errors = Collections.singletonList(usuarioNaoEncontradoException.getMessage());
-        return handleExceptionInternal(usuarioNaoEncontradoException, new ApiError(errors, status), headers, status, request);
     }
 
     protected ResponseEntity<ApiError> handleEventoNaoEncontrandoException(EventoNaoEncontradoException eventoNaoEncontrandoException, HttpHeaders headers, HttpStatus status, WebRequest request) {
